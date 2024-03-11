@@ -25,15 +25,13 @@ namespace automacao
 
             foreach(var palavra in palavras)
             {
-                var letras = palavra.InnerText;
-                foreach(var letra in letras)
+                foreach(var letra in palavra.InnerText)
                 {                   
                     txtBoxInserirPalavras.SendKeys($"{letra}");                   
                 }
                 txtBoxInserirPalavras.SendKeys(" ");
             }
-            
-            var resultado = new Resultado();            
+            Environment.Exit(0);       
         }
     }      
 } 
