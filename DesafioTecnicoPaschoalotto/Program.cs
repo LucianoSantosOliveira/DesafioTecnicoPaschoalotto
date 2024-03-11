@@ -25,7 +25,8 @@ namespace automacao
 
             foreach(var palavra in palavras)
             {
-                foreach(var letra in palavra.InnerText)
+                var letras = palavra.InnerText;
+                foreach(var letra in letras)
                 {                   
                     txtBoxInserirPalavras.SendKeys($"{letra}");                   
                 }
