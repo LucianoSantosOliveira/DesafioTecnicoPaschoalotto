@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace DesafioTecnicoPaschoalotto.objetos
 {
-    internal class Resultado
+    public class Resultado
     {
         public Resultado()
         {
             this.wordsPerMinute = "";
             this.keyStrokes = "";
-            this.correctWords = "";
-            this.WrongWords = ""; 
+            this.correctWords = 0;
+            this.WrongWords = 0; 
         }
-        public string wordsPerMinute { get; set; }
-        public string keyStrokes { get; set; }
-        public string correctWords { get; set; }
-        public string WrongWords { get ; set; }
+        public string? wordsPerMinute { get; set; }
+        public string? keyStrokes { get; set; }
+        public int? correctWords { get; set; }
+        public int? WrongWords { get ; set; }
     }
 }

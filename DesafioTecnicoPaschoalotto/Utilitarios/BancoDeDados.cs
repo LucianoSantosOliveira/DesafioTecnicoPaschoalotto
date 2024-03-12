@@ -1,6 +1,8 @@
 ﻿using DesafioTecnicoPaschoalotto.objetos;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,10 +12,24 @@ namespace DesafioTecnicoPaschoalotto.Utilitarios
 {
     internal class BancoDeDados
     {
-        private string dataBaseAddress = "Server=tcp:desafiopaschoalotto.database.windows.net,1433;Initial Catalog=DesafioPaschoalotto;Persist Security Info=False;User ID=Luciano;Password={Pontiacgto123@};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+        string conectionString = "Server=localhost\\SQLEXPRESS;Database=DesafioPaschoalotto;Trusted_Connection=True;";
+        public BancoDeDados()
+        {
+            var query = "USE DesafioPaschoalotto";
+            using var sqlCon = new SqlConnection(conectionString);
+            {
+                sqlCon.Open();
+            }
+        }        
         public void InserirResultadosNoBD(Resultado resultado)
         {
-            
+            var query = $"INSERT INTO dbo.Resultados VALUES ('{resultado.wordsPerMinute}','{resultado.keyStrokes}',{resultado.correctWords},{resultado.WrongWords})";
+            using var sqlCon = new SqlConnection(conectionString);
+            {
+                sqlCon.Open();
+                using var sqlCommand = new SqlCommand(query, sqlCon);
+                    sqlCommand.ExecuteNonQuery();
+            }
         }
     }
 }
