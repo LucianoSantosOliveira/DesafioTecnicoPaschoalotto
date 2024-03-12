@@ -1,6 +1,7 @@
 ﻿using DesafioTecnicoPaschoalotto.objetos;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace DesafioTecnicoPaschoalotto.Utilitarios
 {
     internal class BancoDeDados
     {
-        string conectionString = "Server=localhost\\SQLEXPRESS;Database=DesafioPaschoalotto;Trusted_Connection=True;";
+        string conectionString = ConfigurationManager.AppSettings["StringBd"];
         public BancoDeDados()
         {
             var query = "USE DesafioPaschoalotto";
