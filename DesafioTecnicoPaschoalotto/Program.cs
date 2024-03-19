@@ -6,7 +6,6 @@ using OpenQA.Selenium.Edge;
 using System.Text.RegularExpressions;
 
 automacao.Program.ExecutarAutomacao();
-
 namespace automacao
 {
     public static class Program
@@ -20,12 +19,9 @@ namespace automacao
                 var BtndenyCookie = webDriver.FindElement(By.XPath("/html/body/div[1]/div/div[4]/div[1]/div[2]/button[1]"));
                 BtndenyCookie.Click();
                 var txtBoxInserirPalavras = webDriver.FindElement(By.Id("inputfield"));
-
                 var htmlContend = webDriver.PageSource;
-
                 var htmlDocument = new HtmlDocument();
                 htmlDocument.LoadHtml(htmlContend);
-
                 var palavras = htmlDocument.GetElementbyId("words").ChildNodes;
 
                 foreach (var palavra in palavras)
@@ -54,11 +50,9 @@ namespace automacao
             catch (Exception ex)
             {
                 Console.WriteLine($"Erro, execute a aplicação novamente {ex.Message}");
-            }
-            
+            }           
             Environment.Exit(0);       
         }
-
         private static int? filtrarSomenteNumero(string entrada)
         {
             Match match = Regex.Match(entrada, @"-?\d+");
@@ -71,7 +65,6 @@ namespace automacao
             }
             return null;
         }
-
         public static void InserirResultados(Resultado resultado)
         {
             BancoDeDados banco = new BancoDeDados();
@@ -79,4 +72,3 @@ namespace automacao
         }
     }      
 } 
-
